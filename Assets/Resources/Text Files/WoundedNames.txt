@@ -1,2 +1,2 @@
-NameA, RankA, NationalityA
-NameB, RankB, NationalityB
+NameA, 18, RankA, NationalityA
+NameB, 20, RankB, NationalityB
