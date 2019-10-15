@@ -1,0 +1,2 @@
+NameA, RankA, NationalityA
+NameB, RankB, NationalityB
