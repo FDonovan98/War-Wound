@@ -5,7 +5,7 @@ using UnityEngine;
 using System.IO;
 using System;
 
-public class AbstractWoundedClass : MonoBehaviour
+public class AbstractWoundedClass
 {
     public string Name;
     public string Age;

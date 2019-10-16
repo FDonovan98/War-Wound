@@ -5,7 +5,7 @@ using UnityEngine;
 using System;
 using System.IO;
 
-public class ReadWoundedData : AbstractWoundedClass
+public class ReadWoundedData : MonoBehaviour
 {
     public AbstractWoundedClass[] wounded;
     // Start is called before the first frame update
