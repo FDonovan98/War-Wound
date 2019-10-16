@@ -12,17 +12,14 @@ public class AbstractWoundedClass
     public string Rank;
     public string Nationality;
 
-    public AbstractWoundedClass(string AllData = "", char Seperator = ',')
+    public AbstractWoundedClass(string WoundedData = "")
     {
-        if(AllData != "")
-        {
-            string[] items = AllData.Split(Seperator);
+        string[] WoundedDataElements = AbstractStringBreaker.StringBreak(WoundedData);
 
-            Name = items[0];
-            Age = items[1];
-            Rank = items[2];
-            Nationality = items[3];
-        }
+        Name = WoundedDataElements[0];
+        Age = WoundedDataElements[1];
+        Rank = WoundedDataElements[2];
+        Nationality = WoundedDataElements[3];
         
     }
 }
