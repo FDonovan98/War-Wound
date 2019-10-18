@@ -6,7 +6,8 @@ In War Wound you play a medic on the front lines of war. Casulaties are high, su
 Harry Donovan - Programmer\
 		- Lead Production\
 Leah Fisher   - Programmer \
-Tyler Pinney  - Programmer
+Tyler Pinney  - Programmer \
+Chris Copeland - Art/ 3D
 	      
 
 ### To-Do List
@@ -26,6 +27,7 @@ Tyler Pinney  - Programmer
 * New day button to redo above
 * Wounded have Names, Rank, Nationality, Bio
 * Depending on who you save effects how many wounded in the future
+* Resupply 'truck' that regularly resupplies medical supplies
 
 #### Should Have
 * Number of wounded and severity should scale with time
@@ -41,6 +43,7 @@ Tyler Pinney  - Programmer
 * More or less suplies
 * VIPs
 * Rampant infection - blanket increase to COD
+* Disruption to resupply truck
 
 #### Won't Have
 * Other Eras
