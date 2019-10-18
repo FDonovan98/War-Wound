@@ -5,20 +5,29 @@ In War Wound you play a medic on the front lines of war. Casulaties are high, su
 ## The Team
 Harry Donovan - Programmer\
 		- Lead Production\
-Leah Fisher   - Programmer
+Leah Fisher   - Programmer \
+Tyler Pinney  - Programmer \
+Chris Copeland - Art/ 3D
 	      
 
 ### To-Do List
 #### Must Have
+* Wounded come in 
+* Ability to apply meds
+* Meds should be removed
+* Wound marked as treated
+* COD decreased
+* Wounded then leave, check if they die 
 * Wounded come in
 * Ability to apply meds
-** Meds should be removed
-** Wound marked as treated
-** COD decreased
-** Wounded then leave, check if they die
+* Meds should be removed
+* Wound marked as treated
+* COD decreased
+* Wounded then leave, check if they die
 * New day button to redo above
 * Wounded have Names, Rank, Nationality, Bio
 * Depending on who you save effects how many wounded in the future
+* Resupply 'truck' that regularly resupplies medical supplies
 
 #### Should Have
 * Number of wounded and severity should scale with time
@@ -29,11 +38,12 @@ Leah Fisher   - Programmer
 
 #### Could Have
 * Events
-** Text needs to corespond to actual event 
-*** More or less wounded
-*** More or less suplies
-*** VIPs
-*** Rampant infection - blanket increase to COD
+* Text needs to corespond to actual event 
+* More or less wounded
+* More or less suplies
+* VIPs
+* Rampant infection - blanket increase to COD
+* Disruption to resupply truck
 
 #### Won't Have
 * Other Eras
