@@ -9,15 +9,11 @@ Harry Donovan - Programmer \
 ### To-Do List
 #### Must Have
 * Wounded come in 
-
-
 * Ability to apply meds
 * Meds should be removed
 * Wound marked as treated
 * COD decreased
 * Wounded then leave, check if they die 
-
-
 * New day button to redo above
 * Wounded have Names, Rank, Nationality, Bio
 * Depending on who you save effects how many wounded in the future
