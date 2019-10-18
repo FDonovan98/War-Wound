@@ -7,10 +7,22 @@ using System;
 
 public class AbstractWoundedClass
 {
-    public string Name;
-    public string Age;
-    public string Rank;
-    public string Nationality;
+    enum WoundType
+    {
+        Minor,
+        Major,
+        Critical
+    };
+
+    protected string Name;
+    protected string Age;
+    protected string Rank;
+    protected string Nationality;
+    protected int WoundsMinor;
+    protected int WoundsMajor;
+    protected int WoundsCrit;
+
+    private int DeathChance;
 
     public AbstractWoundedClass(string WoundedData = "")
     {
@@ -20,6 +32,20 @@ public class AbstractWoundedClass
         Age = WoundedDataElements[1];
         Rank = WoundedDataElements[2];
         Nationality = WoundedDataElements[3];
+    }
+
+    public int EditWounds(WoundType TypeOfWound, int WoundsNum)
+    {
+        if(TypeOfWound == Minor)
+        {
+            WoundsMinor += WoundsNum;
+        } else if(TypeOfWound == Major)
+        {
+            WoundsMinor += WoundsNum;
+        } else
+        {
+            WoundsCrit += WoundsNum;
+        }
         
     }
 }
