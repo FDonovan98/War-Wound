@@ -4,6 +4,7 @@ In War Wound you play a medic on the front lines of war. Casulaties are high, su
 
 ## The Team
 Harry Donovan - Programmer
+Leah Fisher   - Programmer
 	      - Lead Production
 
 ### To-Do List
