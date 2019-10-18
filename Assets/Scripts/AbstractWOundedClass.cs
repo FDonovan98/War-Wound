@@ -7,7 +7,7 @@ using System;
 
 public class AbstractWoundedClass
 {
-    enum WoundType
+    public enum WoundType
     {
         Minor,
         Major,
@@ -18,9 +18,9 @@ public class AbstractWoundedClass
     protected string Age;
     protected string Rank;
     protected string Nationality;
-    protected int WoundsMinor;
-    protected int WoundsMajor;
-    protected int WoundsCrit;
+    protected int WoundsMinor = 0;
+    protected int WoundsMajor = 0;
+    protected int WoundsCrit = 0;
 
     private int DeathChance;
 
@@ -36,15 +36,27 @@ public class AbstractWoundedClass
 
     public int EditWounds(WoundType TypeOfWound, int WoundsNum)
     {
-        if(TypeOfWound == Minor)
+        if(TypeOfWound == WoundType.Minor)
         {
             WoundsMinor += WoundsNum;
-        } else if(TypeOfWound == Major)
+            if(WoundsMinor<0)
+            {
+                WoundsMinor = 0;
+            }
+        } else if(TypeOfWound == WoundType.Major)
         {
             WoundsMinor += WoundsNum;
+            if (WoundsMajor < 0)
+            {
+                WoundsMajor = 0;
+            }
         } else
         {
             WoundsCrit += WoundsNum;
+            if (WoundsCrit < 0)
+            {
+                WoundsCrit = 0;
+            }
         }
         
     }
