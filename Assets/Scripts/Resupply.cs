@@ -11,7 +11,7 @@ public class Resupply
         Critical
     };
 
-    private int[] ResupplyCount = [0, 0, 0];
+    private int[] ResupplyCount = {0, 0, 0 };
 
     public Resupply(int MinorResupply, int MajorResupply, int CriticalResupply)
     {
