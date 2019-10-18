@@ -3,19 +3,20 @@ When you can't save everyone, who do you choose to let die?
 In War Wound you play a medic on the front lines of war. Casulaties are high, supplies are low, and it's up to you to save as many people as you can. Treat the wounded, manage your supplies, and pray the resupply truck actually makes it to you this week.
 
 ## The Team
-Harry Donovan - Programmer \
-	      - Lead Production
+Harry Donovan \
+- Programmer \
+- Lead Production
 
 ### To-Do List
 #### Must Have
-* Wounded come in \
-
+* Wounded come in 
+\
 * Ability to apply meds
 * Meds should be removed
 * Wound marked as treated
 * COD decreased
-* Wounded then leave, check if they die \
-
+* Wounded then leave, check if they die 
+\
 * New day button to redo above
 * Wounded have Names, Rank, Nationality, Bio
 * Depending on who you save effects how many wounded in the future
