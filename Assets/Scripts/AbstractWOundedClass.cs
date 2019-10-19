@@ -34,7 +34,7 @@ public class AbstractWoundedClass
         Nationality = WoundedDataElements[3];
     }
 
-    public int EditWounds(WoundType TypeOfWound, int WoundsNum)
+    public void EditWounds(WoundType TypeOfWound, int WoundsNum)
     {
         if(TypeOfWound == WoundType.Minor)
         {
