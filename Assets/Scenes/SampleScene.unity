@@ -151,11 +151,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b07a82815916da744b1f92995dac2457, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: 
-  Age: 
-  Rank: 
-  Nationality: 
-  wounded: []
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
