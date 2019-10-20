@@ -15,10 +15,10 @@ Chris Copeland - Art/ 3D
 * Wounded come in 
 * Ability to apply meds - Code Framework Written - Harry Donovan
 * Meds should be removed
-* Wound marked as treated
+* Wound marked as treated - Wound currently removed when treated - Harry Donovan
 * COD decreased - Code Written - Harry Donovan
 * Wounded then leave, check if they die - Code Written - Harry Donovan
-* New day button to redo above
+* New day button
 * Wounded have Names, Rank, Nationality, Bio - Code Written - Harry Donovan
 * Depending on who you save effects how many wounded in the future
 * Resupply 'truck' that regularly resupplies medical supplies - Code Written - Harry Donovan
