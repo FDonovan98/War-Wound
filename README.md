@@ -13,7 +13,7 @@ Chris Copeland - Art/ 3D
 ### To-Do List
 #### Must Have
 * Wounded come in 
-* Ability to apply meds
+* Ability to apply meds - Code Framework Written - Harry Donovan
 * Meds should be removed
 * Wound marked as treated
 * COD decreased
