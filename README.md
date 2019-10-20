@@ -10,10 +10,10 @@ Tyler Pinney  - Programmer \
 Chris Copeland - Art/ 3D
 	      
 
-### To-Do List
+## To-Do List
 Normal Text - To Do \
 *Italics* - Partially Complete \
-~~Crossed Out~~ - Completed \
+~~Crossed Out~~ - Completed 
 
 #### Must Have
 * Wounded come in 
