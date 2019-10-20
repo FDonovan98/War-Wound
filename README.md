@@ -16,18 +16,12 @@ Chris Copeland - Art/ 3D
 * Ability to apply meds - Code Framework Written - Harry Donovan
 * Meds should be removed
 * Wound marked as treated
-* COD decreased
-* Wounded then leave, check if they die 
-* Wounded come in
-* Ability to apply meds
-* Meds should be removed
-* Wound marked as treated
-* COD decreased
-* Wounded then leave, check if they die
+* COD decreased - Code Written - Harry Donovan
+* Wounded then leave, check if they die - Code Written - Harry Donovan
 * New day button to redo above
-* Wounded have Names, Rank, Nationality, Bio
+* Wounded have Names, Rank, Nationality, Bio - Code Written - Harry Donovan
 * Depending on who you save effects how many wounded in the future
-* Resupply 'truck' that regularly resupplies medical supplies
+* Resupply 'truck' that regularly resupplies medical supplies - Code Written - Harry Donovan
 
 #### Should Have
 * Number of wounded and severity should scale with time
