@@ -5,24 +5,14 @@ using UnityEngine;
 using System.IO;
 using System;
 
-public class AbstractWoundedClass
+public class AbstractWoundedClass : AbstractSupplies
 {
-    public enum WoundType
-    {
-        Minor,
-        Major,
-        Critical
-    };
-
     protected string Name;
     protected string Age;
     protected string Rank;
     protected string Nationality;
-    protected int WoundsMinor = 0;
-    protected int WoundsMajor = 0;
-    protected int WoundsCrit = 0;
 
-    private int DeathChance;
+    protected int DeathChance;
 
     public AbstractWoundedClass(string WoundedData = "")
     {
@@ -33,31 +23,5 @@ public class AbstractWoundedClass
         Rank = WoundedDataElements[2];
         Nationality = WoundedDataElements[3];
     }
-
-    public void EditWounds(WoundType TypeOfWound, int WoundsNum)
-    {
-        if(TypeOfWound == WoundType.Minor)
-        {
-            WoundsMinor += WoundsNum;
-            if(WoundsMinor<0)
-            {
-                WoundsMinor = 0;
-            }
-        } else if(TypeOfWound == WoundType.Major)
-        {
-            WoundsMinor += WoundsNum;
-            if (WoundsMajor < 0)
-            {
-                WoundsMajor = 0;
-            }
-        } else
-        {
-            WoundsCrit += WoundsNum;
-            if (WoundsCrit < 0)
-            {
-                WoundsCrit = 0;
-            }
-        }
         
-    }
 }
