@@ -11,9 +11,13 @@ Chris Copeland - Art/ 3D
 	      
 
 ### To-Do List
+Normal Text - To Do \
+*Italics* - Partially Complete \
+~~Crossed Out~~ - Completed \
+
 #### Must Have
 * Wounded come in 
-* Ability to apply meds - Code Written - Harry Donovan
+* *Ability to apply meds* - Code Written - Harry Donovan
 * Meds should be removed
 * *Wound marked as treated* - Wound currently removed when treated - Harry Donovan
 * ~~COD decreased~~ - Code Written - Harry Donovan
@@ -21,7 +25,7 @@ Chris Copeland - Art/ 3D
 * New day button
 * ~~Wounded have Names, Rank, Nationality, Bio~~ - Code Written - Harry Donovan
 * Depending on who you save effects how many wounded in the future
-* Resupply 'truck' that regularly resupplies medical supplies - Code Written - Harry Donovan
+* *Resupply 'truck' that regularly resupplies medical supplies* - Code Written - Harry Donovan
 
 #### Should Have
 * Number of wounded and severity should scale with time
