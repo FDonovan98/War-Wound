@@ -8,6 +8,7 @@ using System.IO;
 public class ReadWoundedData : MonoBehaviour
 {
     public AbstractWoundedClass[] wounded;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,11 +21,13 @@ public class ReadWoundedData : MonoBehaviour
             wounded[i] = new AbstractWoundedClass(woundedNamesReader.ReadLine());
         }
 
+        ///////////// Debug to print all names read in
+        //for(int i = 0; i < wounded.Length; i++)
+        //{
+        //    Debug.Log(wounded[i].Name);
+        //}
+        /////////////
+
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

@@ -7,12 +7,12 @@ using System;
 
 public class AbstractWoundedClass : AbstractSupplies
 {
-    protected string Name;
-    protected string Age;
-    protected string Rank;
-    protected string Nationality;
+    internal string Name;
+    internal string Age;
+    internal string Rank;
+    internal string Nationality;
 
-    protected int DeathChance;
+    internal int DeathChance = 0;
 
     public AbstractWoundedClass(string WoundedData = "")
     {
