@@ -9,6 +9,8 @@ public class NewDay : AbstractReadWoundedData
     private int[] LeavingPatients = { };
     private AbstractWoundedClass[] wounded;
 
+    private int NumberOfDeaths = 0;
+
     public int[] CurrentPatients = { };
 
     //private void AddNewPatientsToList(int[] NewPatients)
@@ -34,7 +36,19 @@ public class NewDay : AbstractReadWoundedData
             if (wounded[i].Dead)
             {
                 wounded = (AbstractWoundedClass[])AbstractRemoveItemFromArray.RemoveItem(wounded, i);
+                NumberOfDeaths++;
             }
+        }
+    }
+
+    private bool CheckFailureConditions()
+    {
+        if(NumberOfDeaths > 20)
+        {
+            return true;
+        } else
+        {
+            return false;
         }
     }
 
@@ -47,6 +61,11 @@ public class NewDay : AbstractReadWoundedData
         RemoveOldPatientsFromList();
         //AddNewPatientsToList();
         RemoveDeadWounded();
+        if(CheckFailureConditions())
+        {
+            //EndGame;
+        }
+        
     }
 }
 
