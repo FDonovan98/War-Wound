@@ -10,12 +10,13 @@ public class NewDay : AbstractReadWoundedData
     private AbstractWoundedClass[] wounded;
 
     private int NumberOfDeaths = 0;
+    private int WeightedDeathScore = 0;
 
     public int[] CurrentPatients = { };
 
     //private void AddNewPatientsToList(int[] NewPatients)
     //{
-    //    NewArrivals = GenerateNewPatients();
+    //    NewArrivals = GenerateNewPatients(WeightedDeathScore);
     //}
 
     private void RemoveOldPatientsFromList()
@@ -37,6 +38,8 @@ public class NewDay : AbstractReadWoundedData
             {
                 wounded = (AbstractWoundedClass[])AbstractRemoveItemFromArray.RemoveItem(wounded, i);
                 NumberOfDeaths++;
+                //Score is increased more when a higher rank dies. Used for scaling difficulty
+                WeightedDeathScore += wounded.Rank;
             }
         }
     }
