@@ -20,7 +20,7 @@ public class AbstractWoundedClass : AbstractSupplies
 
     private int[] WoundDeathChance = {10, 20, 40};
 
-    private bool HasBed;
+    public bool HasBed;
     private int LengthOfBedStay = 0;
     private int BedModifier = 0;
 

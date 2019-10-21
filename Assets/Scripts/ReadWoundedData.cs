@@ -22,10 +22,10 @@ public class ReadWoundedData : MonoBehaviour
         }
 
         ///////////// Debug to print all names read in
-        //for(int i = 0; i < wounded.Length; i++)
-        //{
-        //    Debug.Log(wounded[i].Name);
-        //}
+        for (int i = 0; i < wounded.Length; i++)
+        {
+            Debug.Log(wounded[i].Name);
+        }
         /////////////
 
     }
