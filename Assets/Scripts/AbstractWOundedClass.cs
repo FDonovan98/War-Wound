@@ -8,8 +8,8 @@ using System;
 public class AbstractWoundedClass : AbstractSupplies
 {
     internal string Name;
-    internal string Age;
-    internal string Rank;
+    internal int Age;
+    internal AvailableRanks Rank;
     internal string Nationality;
 
     private int DeathChanceModifier = 0;
@@ -24,14 +24,34 @@ public class AbstractWoundedClass : AbstractSupplies
     private int LengthOfBedStay = 0;
     private int BedModifier = 0;
 
+    public enum AvailableRanks
+    {
+        Private,
+        Lance_Corporal,
+        Lieutenant,
+        Corporal,
+        Sergeant,
+        Staff_Sergeant,
+        Captain,
+        Warrant_Officer_2,
+        Major,
+        Warrant_Officer_1,
+    }
+
     public AbstractWoundedClass(string WoundedData = "")
     {
         string[] WoundedDataElements = AbstractStringBreaker.StringBreak(WoundedData);
 
         Name = WoundedDataElements[0];
-        Age = WoundedDataElements[1];
-        Rank = WoundedDataElements[2];
-        Nationality = WoundedDataElements[3];
+        Nationality = WoundedDataElements[1];
+
+        Age = UnityEngine.Random.Range(16, 65);
+
+        //Generates a random rank using a logarithmic curve, so higher ranks are rarer
+        float RankValueFloat = UnityEngine.Random.Range(0.0f, 2.0f);
+        RankValueFloat = Mathf.Pow(10, RankValueFloat - 1);
+        int RankValueInt = (int)Mathf.Floor(RankValueFloat);
+        Rank = (AvailableRanks)RankValueInt;
     }
 
     public void TreatWound(WoundType Wound, WoundType Medicine)

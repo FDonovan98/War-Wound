@@ -54,7 +54,7 @@ public class NewDay : AbstractReadWoundedData
 
     private void Start()
     {
-        wounded = ReadInWounded();
+        wounded = ReadInWounded();        
     }
     void OnMouseDown()
     {
