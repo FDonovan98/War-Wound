@@ -22,7 +22,7 @@ Normal Text - To Do \
 * *Wound marked as treated* - Wound currently removed when treated - Harry Donovan
 * ~~COD decreased~~ - Code Written - Harry Donovan
 * ~~Wounded then leave, check if they die~~ - Code Written - Harry Donovan
-* New day button
+* *New day button* - Code Written - Harry Donovan
 * ~~Wounded have Names, Rank, Nationality, Bio~~ - Code Written - Harry Donovan
 * Depending on who you save effects how many wounded in the future
 * *Resupply 'truck' that regularly resupplies medical supplies* - Code Written - Harry Donovan
