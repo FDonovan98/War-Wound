@@ -5,12 +5,12 @@ using UnityEngine;
 using System;
 using System.IO;
 
-public class ReadWoundedData : MonoBehaviour
+public class AbstractReadWoundedData : MonoBehaviour
 {
-    public AbstractWoundedClass[] wounded;
+    private AbstractWoundedClass[] wounded;
 
     // Start is called before the first frame update
-    void Start()
+    public AbstractWoundedClass[] ReadInWounded()
     {
         AbstractGenerateStringReader.GenerateStringReader("WoundedNames", out StringReader woundedNamesReader, out int lineCount);
         
@@ -27,6 +27,8 @@ public class ReadWoundedData : MonoBehaviour
             Debug.Log(wounded[i].Name);
         }
         /////////////
+
+        return wounded;
 
     }
 
