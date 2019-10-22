@@ -36,6 +36,7 @@ public class AbstractWoundedClass : AbstractSupplies
         Warrant_Officer_2,
         Major,
         Warrant_Officer_1,
+        Lietenant_Colonel
     }
 
     public AbstractWoundedClass(string WoundedData = "")
@@ -47,7 +48,8 @@ public class AbstractWoundedClass : AbstractSupplies
 
         Age = UnityEngine.Random.Range(16, 65);
 
-        //Generates a random rank using a logarithmic curve, so higher ranks are rarer
+        //Generates a random rank using an exponential curve, so higher ranks are rarer 
+        //Follows curve x = 10^(y-1), 0 <= x <= 10)
         float RankValueFloat = UnityEngine.Random.Range(0.0f, 2.0f);
         RankValueFloat = Mathf.Pow(10, RankValueFloat - 1);
         int RankValueInt = (int)Mathf.Floor(RankValueFloat);

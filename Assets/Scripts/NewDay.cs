@@ -7,12 +7,15 @@ public class NewDay : AbstractReadWoundedData
 {
     private int[] NewArrivals = { };
     private int[] LeavingPatients = { };
+    private int[] CurrentPatients = { };
+
     private AbstractWoundedClass[] wounded;
 
     private int NumberOfDeaths = 0;
     private int WeightedDeathScore = 0;
 
-    public int[] CurrentPatients = { };
+    private AbstractSupplies CurrentSupplies;
+    private AbstractSupplies Resupply;
 
     //private void AddNewPatientsToList(int[] NewPatients)
     //{
@@ -64,11 +67,14 @@ public class NewDay : AbstractReadWoundedData
         RemoveOldPatientsFromList();
         //AddNewPatientsToList();
         RemoveDeadWounded();
-        if(CheckFailureConditions())
+        if (CheckFailureConditions())
         {
-            //EndGame;
+            //Function EndGame should send user to fail screens
+            //EndGame();
+        } else
+        {
+            CurrentSupplies = AbstractResupply.DoResupply(CurrentSupplies, Resupply);
         }
-        
     }
 }
 

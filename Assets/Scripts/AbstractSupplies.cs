@@ -12,9 +12,9 @@ public class AbstractSupplies : AbstractOnlyAllowPositiveResult
         Critical
     };
 
-    public int NumberOfWoundTypes = Enum.GetNames(typeof(WoundType)).Length;
+    public static int NumberOfWoundTypes = Enum.GetNames(typeof(WoundType)).Length;
 
-    protected int[] Count = {0, 0, 0};
+    public int[] Count = {0, 0, 0};
 
     public void SetCount(int[] TypeCount)
     {
