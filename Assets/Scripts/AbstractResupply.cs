@@ -1,8 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class AbstractResupply : AbstractSupplies
+﻿public class AbstractResupply : AbstractSupplies
 {
     public static AbstractSupplies DoResupply(AbstractSupplies AvailableSupplies, AbstractSupplies Resupply)
     {

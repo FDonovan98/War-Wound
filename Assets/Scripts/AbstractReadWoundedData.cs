@@ -1,15 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-using System;
 using System.IO;
 
 public class AbstractReadWoundedData : MonoBehaviour
 {
     private AbstractWoundedClass[] wounded;
 
-    // Start is called before the first frame update
+    //Uses custom function to convert text file to class StringReader containing all of the text and the number of lines in the file. Each line in the file is then used to generate an item in the 'wounded' array.
     public AbstractWoundedClass[] ReadInWounded()
     {
         AbstractGenerateStringReader.GenerateStringReader("WoundedNames", out StringReader woundedNamesReader, out int lineCount);

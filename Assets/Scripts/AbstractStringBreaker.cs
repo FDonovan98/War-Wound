@@ -1,8 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class AbstractStringBreaker
+﻿public class AbstractStringBreaker
 {
     public static string[] StringBreak(string StringToBreak, char Seperator = ',')
     {

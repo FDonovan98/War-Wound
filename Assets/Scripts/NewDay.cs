@@ -1,9 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using System;
-
-public class NewDay : AbstractReadWoundedData
+﻿public class NewDay : AbstractReadWoundedData
 {
     private int[] NewArrivals = { };
     private int[] LeavingPatients = { };

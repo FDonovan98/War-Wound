@@ -1,11 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using System.IO;
-
 
 public class AbstractGenerateStringReader
 {
+    //Reads in a text file, converts it to class TextAsset and then converts this text asset to class StringReader
     public static void GenerateStringReader(string Filename, out StringReader Reader, out int LineCount)
     {
         TextAsset FilenameAsset = Resources.Load<TextAsset>("Text Files/" + Filename);
