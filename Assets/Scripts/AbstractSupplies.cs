@@ -15,13 +15,33 @@ public class AbstractSupplies : AbstractOnlyAllowPositiveResult
 
     public void SetCount(int[] TypeCount)
     {
-        for(int i = 0; i < NumberOfWoundTypes; i++)
+        for (int i = 0; i < NumberOfWoundTypes; i++)
         {
             Count[i] = OnlyAllowPositive(TypeCount[i], 0);
         }
     }
 
     public void SetCount(int MinorCount, int MajorCount, int CriticalCount)
+    {
+        Count[(int)WoundType.Minor] = OnlyAllowPositive(MinorCount, 0);
+        Count[(int)WoundType.Major] = OnlyAllowPositive(MajorCount, 0);
+        Count[(int)WoundType.Critical] = OnlyAllowPositive(CriticalCount, 0);
+    }
+
+    public AbstractSupplies()
+    {
+
+    }
+
+    public AbstractSupplies(int[] TypeCount)
+    {
+        for (int i = 0; i < NumberOfWoundTypes; i++)
+        {
+            Count[i] = OnlyAllowPositive(TypeCount[i], 0);
+        }
+    }
+
+    public AbstractSupplies(int MinorCount, int MajorCount, int CriticalCount)
     {
         Count[(int)WoundType.Minor] = OnlyAllowPositive(MinorCount, 0);
         Count[(int)WoundType.Major] = OnlyAllowPositive(MajorCount, 0);

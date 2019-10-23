@@ -1,4 +1,6 @@
-﻿public class NewDay : AbstractReadWoundedData
+﻿using UnityEngine;
+
+public class NewDay : AbstractReadWoundedData
 {
     private int[] NewArrivals = { };
     private int[] LeavingPatients = { };
@@ -55,13 +57,14 @@
         }
     }
 
-    private void Start()
+    void Start()
     {
         wounded = ReadInWounded();
-        CurrentSupplies.SetCount(5, 5, 5);
-        Resupply.SetCount(2, 2, 2);
+        Resupply = new AbstractSupplies(1, 1, 1);
+        CurrentSupplies = new AbstractSupplies(5, 5, 5);
     }
-    void OnMouseDown()
+
+    public void OnButtonPress()
     {
         RemoveOldPatientsFromList();
         //AddNewPatientsToList();
@@ -81,6 +84,7 @@
                 DaysUntilResupply--;
             }         
         }
+        Debug.Log(CurrentSupplies.Count[0] + " " + DaysUntilResupply);
     }
 }
 
