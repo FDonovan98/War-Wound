@@ -21,6 +21,13 @@ public class AbstractSupplies : AbstractOnlyAllowPositiveResult
         }
     }
 
+    public void SetCount(int MinorCount, int MajorCount, int CriticalCount)
+    {
+        Count[(int)WoundType.Minor] = OnlyAllowPositive(MinorCount, 0);
+        Count[(int)WoundType.Major] = OnlyAllowPositive(MajorCount, 0);
+        Count[(int)WoundType.Critical] = OnlyAllowPositive(CriticalCount, 0);
+    }
+
     public void EditCount(WoundType Type, int Change)
     {
         Count[(int)Type] = OnlyAllowPositive(Count[(int)Type], Change);

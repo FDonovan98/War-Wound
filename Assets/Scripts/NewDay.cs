@@ -11,6 +11,8 @@
 
     private AbstractSupplies CurrentSupplies;
     private AbstractSupplies Resupply;
+    private static int ResupplyDelay = 7;
+    private int DaysUntilResupply = ResupplyDelay;
 
     //private void AddNewPatientsToList(int[] NewPatients)
     //{
@@ -55,7 +57,9 @@
 
     private void Start()
     {
-        wounded = ReadInWounded();        
+        wounded = ReadInWounded();
+        CurrentSupplies.SetCount(5, 5, 5);
+        Resupply.SetCount(2, 2, 2);
     }
     void OnMouseDown()
     {
@@ -68,7 +72,14 @@
             //EndGame();
         } else
         {
-            CurrentSupplies = AbstractResupply.DoResupply(CurrentSupplies, Resupply);
+            if(DaysUntilResupply == 0)
+            {
+                CurrentSupplies = AbstractResupply.DoResupply(CurrentSupplies, Resupply);
+                DaysUntilResupply = ResupplyDelay;
+            }  else
+            {
+                DaysUntilResupply--;
+            }         
         }
     }
 }
