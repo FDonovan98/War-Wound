@@ -5,18 +5,19 @@ using UnityEngine;
 public class RotateCamera : MonoBehaviour
 {
     private bool LookingLeft = true;
+    private int DegreesOfRotation = 90;
 
     private void RotateRight()
     {
-        Camera.main.transform.Rotate(0.0f, 45.0f, 0.0f);
+        Camera.main.transform.Rotate(0, DegreesOfRotation, 0);
     }
 
     private void RotateLeft()
     {
-        Camera.main.transform.Rotate(0.0f, -45.0f, 0.0f);
+        Camera.main.transform.Rotate(0, -DegreesOfRotation, 0);
     }
 
-    private void OnGUI()
+    public void OnButtonPress()
     {
         if(LookingLeft)
         {
