@@ -50,7 +50,6 @@ public class AbstractSupplies : AbstractOnlyAllowPositiveResult
 
     public void EditCount(WoundType Type, int Change)
     {
-        Count[(int)Type] = OnlyAllowPositive(Count[(int)Type], Change);
-            
+        Count[(int)Type] = OnlyAllowPositive(Count[(int)Type], Change);           
     }
 }

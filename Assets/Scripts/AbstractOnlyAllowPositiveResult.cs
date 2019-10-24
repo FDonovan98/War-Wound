@@ -5,7 +5,7 @@
     {
         if ((Value += Change) > 0)
         {
-           return Value + Change;
+           return Value;
         } else
         {
             return 0;

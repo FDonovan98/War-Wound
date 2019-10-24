@@ -17,15 +17,18 @@ public class AbstractGenerateNewPatients
             {
                 NumberOfWounds[2] += 1;
                 Severity -= WoundWeighting[2];
+
             } else if (Severity >= WoundWeighting[1])
             {
                 NumberOfWounds[1] += 1;
                 Severity -= WoundWeighting[1];
-            } else if (Severity != 0)
+
+            } else
             {
                 NumberOfWounds[0] += 1;
                 Severity -= WoundWeighting[0];
             }
+
         } while (Severity != 0);
 
         return NumberOfWounds;
@@ -36,9 +39,13 @@ public class AbstractGenerateNewPatients
         int SpawnValue = Random.Range(Seed / 2, Seed);
         int NumberOfPatients = SpawnValue % MaxPatients;
 
+        if(NumberOfPatients == 0)
+        {
+            NumberOfPatients = 1;
+        }
+
         int Severity = SpawnValue / MaxPatients;
 
-        Severity *= 10;
         Severity /= NumberOfPatients;
 
         int i = 0;
@@ -54,15 +61,19 @@ public class AbstractGenerateNewPatients
 
             i++;
 
-        } while(i < Wounded.Length && NewPatientList.Count < NumberOfPatients);
+        } while (i < Wounded.Length && NewPatientList.Count < NumberOfPatients);
 
-        for(i = 0; i < NewPatientList.Count; i++)
+        for (i = 0; i < NewPatientList.Count; i++)
         {
             int[] NumberOfWounds = CalculateNumberOfWounds(Severity, WoundWeighting);
 
-            for(i = 0; i < AbstractSupplies.NumberOfWoundTypes; i++)
+            for (i = 0; i < NumberOfPatients; i++)
             {
-                Wounded[NewPatientList[i]].EditCount((AbstractSupplies.WoundType)i, NumberOfWounds[i]);
+                for (int j = 0; j < AbstractSupplies.NumberOfWoundTypes; j++)
+                {
+                    Wounded[NewPatientList[i]].EditCount((AbstractSupplies.WoundType)j, NumberOfWounds[j]);
+                    Wounded[NewPatientList[i]].Injured = true;
+                }
             }
         }
 

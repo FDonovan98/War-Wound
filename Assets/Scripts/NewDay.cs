@@ -6,7 +6,7 @@ public class NewDay : AbstractReadWoundedData
     private List<int> NewArrivals;
     private List<int> LeavingPatients;
     private List<int> CurrentPatients = new List<int>();
-    private int MaxNumberOfPatients = 6;
+    private int MaxNumberOfPatients = 2;
 
     private AbstractWoundedClass[] wounded;
 
@@ -65,6 +65,8 @@ public class NewDay : AbstractReadWoundedData
         wounded = ReadInWounded();
         Resupply = new AbstractSupplies(1, 1, 1);
         CurrentSupplies = new AbstractSupplies(5, 5, 5);
+
+        Debug.Log(wounded[0].Count[0] + " " + wounded[0].Count[1] + " " + wounded[0].Count[2]);
     }
 
     public void OnButtonPress()
@@ -88,6 +90,7 @@ public class NewDay : AbstractReadWoundedData
             }         
         }
         Debug.Log(CurrentSupplies.Count[0] + " " + DaysUntilResupply);
+        Debug.Log(wounded[0].Count[0] + " " + wounded[0].Count[1] + " " + wounded[0].Count[2]);
     }
 }
 
