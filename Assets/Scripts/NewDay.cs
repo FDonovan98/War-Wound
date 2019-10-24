@@ -91,7 +91,9 @@ public class NewDay : AbstractReadWoundedData
             }         
         }
 
-        AbstractUpdateUI.UpdateDaysToResupply(DaysUntilResupply);
+        GameObject Canvas = GameObject.Find("Canvas");
+        UpdateUI UpdateUI = Canvas.GetComponent<UpdateUI>();
+        UpdateUI.UpdateDaysToResupply(DaysUntilResupply);
 
         //Debug.Log(CurrentSupplies.Count[0] + " " + DaysUntilResupply);
         for(int i = 0; i < CurrentPatients.Count; i++)
