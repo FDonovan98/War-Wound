@@ -6,7 +6,7 @@ public class NewDay : AbstractReadWoundedData
     private List<int> NewArrivals;
     private List<int> LeavingPatients;
     private List<int> CurrentPatients = new List<int>();
-    private int MaxNumberOfPatients = 2;
+    private int MaxNumberOfPatients = 6;
 
     private AbstractWoundedClass[] wounded;
 
@@ -90,8 +90,13 @@ public class NewDay : AbstractReadWoundedData
                 DaysUntilResupply--;
             }         
         }
-        Debug.Log(CurrentSupplies.Count[0] + " " + DaysUntilResupply);
-        Debug.Log(wounded[0].Count[0] + " " + wounded[0].Count[1] + " " + wounded[0].Count[2]);
+
+        //Debug.Log(CurrentSupplies.Count[0] + " " + DaysUntilResupply);
+        for(int i = 0; i < CurrentPatients.Count; i++)
+        {
+            Debug.Log(wounded[CurrentPatients[i]].Count[0] + " " + wounded[CurrentPatients[i]].Count[1] + " " + wounded[CurrentPatients[i]].Count[2]);
+        }
+      
     }
 }
 

@@ -7,7 +7,7 @@ public class AbstractGenerateNewPatients
     private static readonly int[] WoundWeighting = {1, 2, 4};
 
     //PlaceHolder script
-    private static int[] CalculateNumberOfWounds(int Severity, int[] WoundWeighting)
+    private static int[] CalculateNumberOfWounds(float Severity, int[] WoundWeighting)
     {
         int[] NumberOfWounds = {0, 0, 0};
 
@@ -29,14 +29,14 @@ public class AbstractGenerateNewPatients
                 Severity -= WoundWeighting[0];
             }
 
-        } while (Severity != 0);
+        } while (Severity > 0);
 
         return NumberOfWounds;
     }
 
-    public static AbstractWoundedClass[] GenerateNewPatients(int Seed, int MaxPatients, ref AbstractWoundedClass[] Wounded, out List<int> NewPatientList)
+    public static AbstractWoundedClass[] GenerateNewPatients(int CurrentWeightedDeathScore, int MaxPatients, ref AbstractWoundedClass[] Wounded, out List<int> NewPatientList)
     {
-        int SpawnValue = Random.Range(Seed / 2, Seed);
+        int SpawnValue = Random.Range(CurrentWeightedDeathScore / 2, CurrentWeightedDeathScore);
         int NumberOfPatients = SpawnValue % MaxPatients;
 
         if(NumberOfPatients == 0)
@@ -44,9 +44,9 @@ public class AbstractGenerateNewPatients
             NumberOfPatients = 1;
         }
 
-        int Severity = SpawnValue / MaxPatients;
-
-        Severity /= NumberOfPatients;
+        //Place holder
+        //float Severity = SpawnValue * (MaxPatients / NumberOfPatients);
+        float Severity = SpawnValue / NumberOfPatients;
 
         int i = 0;
         NewPatientList = new List<int>();
