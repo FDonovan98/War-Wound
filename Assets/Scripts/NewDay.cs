@@ -8,6 +8,9 @@ public class NewDay : AbstractReadWoundedData
     public List<int> CurrentPatients = new List<int>();
     private int MaxNumberOfPatients = 6;
 
+    private static int MaxBeds = 10;
+    private int AvailableBeds = MaxBeds;
+
     private AbstractWoundedClass[] wounded;
 
     private int NumberOfDeaths = 0;
@@ -18,6 +21,8 @@ public class NewDay : AbstractReadWoundedData
     private AbstractSupplies Resupply;
     private static int ResupplyDelay = 7;
     private int DaysUntilResupply = ResupplyDelay;
+
+    UpdateUI UpdateUI;
 
     private void AddNewPatientsToList()
     {
@@ -67,6 +72,9 @@ public class NewDay : AbstractReadWoundedData
         Resupply = new AbstractSupplies(1, 1, 1);
         CurrentSupplies = new AbstractSupplies(5, 5, 5);
 
+        GameObject Canvas = GameObject.Find("Canvas");
+        UpdateUI = Canvas.GetComponent<UpdateUI>();
+
         Debug.Log(wounded[0].Count[0] + " " + wounded[0].Count[1] + " " + wounded[0].Count[2]);
     }
 
@@ -90,10 +98,8 @@ public class NewDay : AbstractReadWoundedData
                 DaysUntilResupply--;
             }         
         }
-
-        GameObject Canvas = GameObject.Find("Canvas");
-        UpdateUI UpdateUI = Canvas.GetComponent<UpdateUI>();
-        UpdateUI.UpdateDaysToResupply(DaysUntilResupply);
+       
+        UpdateUI.UpdateAll(DaysUntilResupply, NewArrivals, CurrentPatients);
 
         //Debug.Log(CurrentSupplies.Count[0] + " " + DaysUntilResupply);
         for(int i = 0; i < CurrentPatients.Count; i++)
