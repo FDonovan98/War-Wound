@@ -5,7 +5,7 @@ public class NewDay : AbstractReadWoundedData
 {
     private List<int> NewArrivals;
     private List<int> LeavingPatients;
-    private List<int> CurrentPatients;
+    private List<int> CurrentPatients = new List<int>();
     private int MaxNumberOfPatients = 6;
 
     private AbstractWoundedClass[] wounded;

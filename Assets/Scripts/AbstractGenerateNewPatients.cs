@@ -7,7 +7,7 @@ public class AbstractGenerateNewPatients
     private int[] WoundWeighting = {1, 2, 4};
 
     //PlaceHolder script
-    private int[] CalculateNumberOfWounds(int Severity)
+    private static int[] CalculateNumberOfWounds(int Severity)
     {
         int[] NumberOfWounds = {0, 0, 0};
         
