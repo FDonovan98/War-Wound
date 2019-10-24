@@ -1124,7 +1124,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 519420033}
+      - m_Target: {fileID: 519420030}
         m_MethodName: OnButtonPress
         m_Mode: 1
         m_Arguments:

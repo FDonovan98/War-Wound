@@ -12,6 +12,7 @@ public class NewDay : AbstractReadWoundedData
 
     private int NumberOfDeaths = 0;
     private int WeightedDeathScore = 10;
+    private int AllowedNumberOfDeaths = 20;
 
     private AbstractSupplies CurrentSupplies;
     private AbstractSupplies Resupply;
@@ -49,9 +50,9 @@ public class NewDay : AbstractReadWoundedData
         }
     }
 
-    private bool CheckFailureConditions()
+    private bool CheckFailureConditions(int AllowedNumberOfDeaths)
     {
-        if(NumberOfDeaths > 20)
+        if(NumberOfDeaths > AllowedNumberOfDeaths)
         {
             return true;
         } else
@@ -74,7 +75,7 @@ public class NewDay : AbstractReadWoundedData
         RemoveOldPatientsFromList();
         AddNewPatientsToList();
         RemoveDeadWounded();
-        if (CheckFailureConditions())
+        if (CheckFailureConditions(AllowedNumberOfDeaths))
         {
             //Function EndGame should send user to fail screens
             //EndGame();

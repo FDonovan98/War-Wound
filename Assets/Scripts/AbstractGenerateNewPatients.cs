@@ -51,7 +51,6 @@ public class AbstractGenerateNewPatients
         int i = 0;
         NewPatientList = new List<int>();
 
-        //Could loop infinitely if the number of available wounded in the list is too small. Game should end before this
         do
         {
             if (!Wounded[i].Injured)
