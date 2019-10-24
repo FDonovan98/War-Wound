@@ -1,33 +1,36 @@
 ﻿using UnityEngine;
+using System.Collections.Generic;
 
 public class NewDay : AbstractReadWoundedData
 {
-    private int[] NewArrivals = { };
-    private int[] LeavingPatients = { };
-    private int[] CurrentPatients = { };
+    private List<int> NewArrivals;
+    private List<int> LeavingPatients;
+    private List<int> CurrentPatients;
+    private int MaxNumberOfPatients = 6;
 
     private AbstractWoundedClass[] wounded;
 
     private int NumberOfDeaths = 0;
-    private int WeightedDeathScore = 0;
+    private int WeightedDeathScore = 10;
 
     private AbstractSupplies CurrentSupplies;
     private AbstractSupplies Resupply;
     private static int ResupplyDelay = 7;
     private int DaysUntilResupply = ResupplyDelay;
 
-    //private void AddNewPatientsToList(int[] NewPatients)
-    //{
-    //    NewArrivals = GenerateNewPatients(WeightedDeathScore);
-    //}
+    private void AddNewPatientsToList()
+    {
+        wounded = AbstractGenerateNewPatients.GenerateNewPatients(WeightedDeathScore, MaxNumberOfPatients, ref wounded, out NewArrivals);
+        CurrentPatients.AddRange(NewArrivals);
+    }
 
     private void RemoveOldPatientsFromList()
     {
-        for(int i = 0; i < CurrentPatients.Length; i++)
+        for(int i = 0; i < CurrentPatients.Count; i++)
         {
             if(!wounded[CurrentPatients[i]].HasBed || wounded[CurrentPatients[i]].Dead)
             {
-                CurrentPatients = AbstractRemoveItemFromArray.RemoveItem(CurrentPatients, i);        
+                CurrentPatients.RemoveAt(i);        
             }
         }
     }
@@ -67,7 +70,7 @@ public class NewDay : AbstractReadWoundedData
     public void OnButtonPress()
     {
         RemoveOldPatientsFromList();
-        //AddNewPatientsToList();
+        AddNewPatientsToList();
         RemoveDeadWounded();
         if (CheckFailureConditions())
         {

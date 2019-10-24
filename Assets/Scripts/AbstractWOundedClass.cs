@@ -11,6 +11,8 @@ public class AbstractWoundedClass : AbstractSupplies
     internal int TotalDeathChance = 0;
     internal bool Dead = false;
 
+    public bool Injured = false;
+
     private int InsufficientMedTreatmentChange = 40;
 
     private int[] WoundDeathChance = {10, 20, 40};
@@ -51,6 +53,22 @@ public class AbstractWoundedClass : AbstractSupplies
         Rank = (AvailableRanks)RankValueInt;
     }
 
+    private bool CheckIfInjured()
+    {
+        if(Count[0] == 0)
+        {
+            for(int i = 1; i < Count.Length; i++)
+            {
+                if(Count[i] != Count[0])
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+        return true;
+    }
+
     public void TreatWound(WoundType Wound, WoundType Medicine)
     {
         int TreatmentDifference = (int)Medicine - (int)Wound;
@@ -76,6 +94,7 @@ public class AbstractWoundedClass : AbstractSupplies
             EditCount(Wound, -1);
         }
 
+        Injured = CheckIfInjured();
         CalculateTotalDeathChance();
     }
 
