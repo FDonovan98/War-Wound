@@ -5,7 +5,7 @@ public class NewDay : AbstractReadWoundedData
 {
     private List<int> NewArrivals;
     private List<int> LeavingPatients;
-    private List<int> CurrentPatients = new List<int>();
+    public List<int> CurrentPatients = new List<int>();
     private int MaxNumberOfPatients = 6;
 
     private AbstractWoundedClass[] wounded;
@@ -90,6 +90,8 @@ public class NewDay : AbstractReadWoundedData
                 DaysUntilResupply--;
             }         
         }
+
+        AbstractUpdateUI.UpdateDaysToResupply(DaysUntilResupply);
 
         //Debug.Log(CurrentSupplies.Count[0] + " " + DaysUntilResupply);
         for(int i = 0; i < CurrentPatients.Count; i++)
