@@ -4,15 +4,29 @@ using UnityEngine;
 
 public class AbstractGenerateNewPatients
 {
-    //currently not used, will be used in CalculateNumberOfWounds
-    private int[] WoundWeighting = {1, 2, 4};
+    private static readonly int[] WoundWeighting = {1, 2, 4};
 
     //PlaceHolder script
-    private static int[] CalculateNumberOfWounds(int Severity)
+    private static int[] CalculateNumberOfWounds(int Severity, int[] WoundWeighting)
     {
         int[] NumberOfWounds = {0, 0, 0};
-        
-        NumberOfWounds = new int[] {1, 1, 1};
+
+        do
+        {
+            if (Severity >= WoundWeighting[2])
+            {
+                NumberOfWounds[2] += 1;
+                Severity -= WoundWeighting[2];
+            } else if (Severity >= WoundWeighting[1])
+            {
+                NumberOfWounds[1] += 1;
+                Severity -= WoundWeighting[1];
+            } else if (Severity != 0)
+            {
+                NumberOfWounds[0] += 1;
+                Severity -= WoundWeighting[0];
+            }
+        } while (Severity != 0);
 
         return NumberOfWounds;
     }
@@ -22,7 +36,6 @@ public class AbstractGenerateNewPatients
         int SpawnValue = Random.Range(Seed / 2, Seed);
         int NumberOfPatients = SpawnValue % MaxPatients;
 
-        //Severity currently unused, will be used in CalculateNumberOfWounds
         int Severity = SpawnValue / MaxPatients;
 
         Severity *= 10;
@@ -45,7 +58,7 @@ public class AbstractGenerateNewPatients
 
         for(i = 0; i < NewPatientList.Count; i++)
         {
-            int[] NumberOfWounds = CalculateNumberOfWounds(Severity);
+            int[] NumberOfWounds = CalculateNumberOfWounds(Severity, WoundWeighting);
 
             for(i = 0; i < AbstractSupplies.NumberOfWoundTypes; i++)
             {
