@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class AbstractGenerateNewPatients
 {
+    //currently not used, will be used in CalculateNumberOfWounds
     private int[] WoundWeighting = {1, 2, 4};
 
     //PlaceHolder script
@@ -20,6 +21,8 @@ public class AbstractGenerateNewPatients
     {
         int SpawnValue = Random.Range(Seed / 2, Seed);
         int NumberOfPatients = SpawnValue % MaxPatients;
+
+        //Severity currently unused, will be used in CalculateNumberOfWounds
         int Severity = SpawnValue / MaxPatients;
 
         Severity *= 10;
