@@ -101,11 +101,11 @@ public class NewDay : AbstractReadWoundedData
        
         UpdateUI.UpdateAll(DaysUntilResupply, NewArrivals, CurrentPatients);
 
-        //Debug.Log(CurrentSupplies.Count[0] + " " + DaysUntilResupply);
-        for(int i = 0; i < CurrentPatients.Count; i++)
-        {
-            Debug.Log(wounded[CurrentPatients[i]].Count[0] + " " + wounded[CurrentPatients[i]].Count[1] + " " + wounded[CurrentPatients[i]].Count[2]);
-        }
+        //Debug code to print all the current patients wounds
+        //for(int i = 0; i < CurrentPatients.Count; i++)
+        //{
+        //    Debug.Log(wounded[CurrentPatients[i]].Count[0] + " " + wounded[CurrentPatients[i]].Count[1] + " " + wounded[CurrentPatients[i]].Count[2]);
+        //}
       
     }
 }

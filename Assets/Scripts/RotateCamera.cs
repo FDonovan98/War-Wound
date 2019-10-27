@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//Rotates the camera to switch the view between two 'scenes'
 public class RotateCamera : MonoBehaviour
 {
     private bool LookingLeft = true;

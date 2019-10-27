@@ -9,8 +9,10 @@ public class AbstractSupplies : AbstractOnlyAllowPositiveResult
         Critical
     };
 
+    //Used elsewhere to improve robustnest to code if new WoundTypes are added
     public static int NumberOfWoundTypes = Enum.GetNames(typeof(WoundType)).Length;
 
+    //Stores how many {Minor, Major, Critical} this item has
     public int[] Count = {0, 0, 0};
 
     public void SetCount(int[] TypeCount)
@@ -28,6 +30,7 @@ public class AbstractSupplies : AbstractOnlyAllowPositiveResult
         Count[(int)WoundType.Critical] = OnlyAllowPositive(CriticalCount, 0);
     }
 
+    //Needed so class can be called without passing constructors
     public AbstractSupplies()
     {
 

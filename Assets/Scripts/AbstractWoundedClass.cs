@@ -36,6 +36,7 @@ public class AbstractWoundedClass : AbstractSupplies
         Lietenant_Colonel
     }
 
+    //Used with 'AbstractGenerateStringReader' script to generate variables using a text file to define name and nationality
     public AbstractWoundedClass(string WoundedData = "")
     {
         string[] WoundedDataElements = AbstractStringBreaker.StringBreak(WoundedData);
@@ -43,11 +44,11 @@ public class AbstractWoundedClass : AbstractSupplies
         Name = WoundedDataElements[0];
         Nationality = WoundedDataElements[1];
 
-        Age = UnityEngine.Random.Range(16, 65);
+        Age = Random.Range(16, 65);
 
         //Generates a random rank using an exponential curve, so higher ranks are rarer 
         //Follows curve x = 10^(y-1), 0 <= x <= 10)
-        float RankValueFloat = UnityEngine.Random.Range(0.0f, 2.0f);
+        float RankValueFloat = Random.Range(0.0f, 2.0f);
         RankValueFloat = Mathf.Pow(10, RankValueFloat - 1);
         int RankValueInt = (int)Mathf.Floor(RankValueFloat);
         Rank = (AvailableRanks)RankValueInt;
@@ -112,7 +113,7 @@ public class AbstractWoundedClass : AbstractSupplies
 
     public void CheckIfKilled()
     {
-        if(UnityEngine.Random.Range(0, 100) <= TotalDeathChance)
+        if(Random.Range(0, 100) <= TotalDeathChance)
         {
             Dead = true;
         }

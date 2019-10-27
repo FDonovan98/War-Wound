@@ -6,7 +6,7 @@ public class AbstractGenerateNewPatients
 {
     private static readonly int[] WoundWeighting = {1, 2, 4};
 
-    //PlaceHolder script
+    //PlaceHolder script. Equation for generating wounds based on severity needs to be improved so it's less consistent
     private static int[] CalculateNumberOfWounds(float Severity, int[] WoundWeighting)
     {
         int[] NumberOfWounds = {0, 0, 0};
@@ -34,8 +34,10 @@ public class AbstractGenerateNewPatients
         return NumberOfWounds;
     }
 
+    //Reads in the players CurrentWeightedDeathScore and outputs a list of wounded. The higher this score is the more severely/ more numerous wounded are created
     public static AbstractWoundedClass[] GenerateNewPatients(int CurrentWeightedDeathScore, int MaxPatients, ref AbstractWoundedClass[] Wounded, out List<int> NewPatientList)
     {
+        //Random used to give some varience between days even with a constant CurrentWeightedDeathScore
         int SpawnValue = Random.Range(CurrentWeightedDeathScore / 2, CurrentWeightedDeathScore);
         int NumberOfPatients = SpawnValue % MaxPatients;
 
@@ -44,13 +46,14 @@ public class AbstractGenerateNewPatients
             NumberOfPatients = 1;
         }
 
-        //Place holder
+        //Place holder - severity equation may be changed
         //float Severity = SpawnValue * (MaxPatients / NumberOfPatients);
         float Severity = SpawnValue / NumberOfPatients;
 
         int i = 0;
         NewPatientList = new List<int>();
 
+        //Grabs the first n possible patients who aren't already wounded or being cared for
         do
         {
             if (!Wounded[i].Injured)
