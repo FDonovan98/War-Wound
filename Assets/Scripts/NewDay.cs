@@ -99,7 +99,7 @@ public class NewDay : AbstractReadWoundedData
             }         
         }
        
-        UpdateUI.UpdateAll(DaysUntilResupply, NewArrivals, CurrentPatients);
+        UpdateUI.UpdateAll(DaysUntilResupply, NewArrivals, CurrentPatients, wounded);
 
         //Debug code to print all the current patients wounds
         //for(int i = 0; i < CurrentPatients.Count; i++)
@@ -109,5 +109,3 @@ public class NewDay : AbstractReadWoundedData
       
     }
 }
-
-

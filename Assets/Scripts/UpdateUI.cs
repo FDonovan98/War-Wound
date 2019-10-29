@@ -1,12 +1,32 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class UpdateUI : MonoBehaviour
 {
-    public Text Resupply;
-    public Text NewWoundedCount;
-    public Text TotalWoundedCount;
+    public TextMeshProUGUI Resupply;
+    public TextMeshProUGUI NewWoundedCount;
+    public TextMeshProUGUI TotalWoundedCount;
+    public GameObject PatientOne;
+    private TextMeshProUGUI[] PatientOneProperties;
+
+    private enum PatientTextElements 
+        {
+            PatientName,
+            PatientAge,
+            PatientBio,
+            PatientNationality,
+            MinorWounds,
+            MajorWounds,
+            CriticalWounds
+        };
+
+    void Start() 
+    {
+        PatientOneProperties = PatientOne.GetComponentsInChildren<TextMeshProUGUI>();
+
+    }
 
     private void DispDaysToResupply(int DaysToResupply)
     {
@@ -23,14 +43,23 @@ public class UpdateUI : MonoBehaviour
         TotalWoundedCount.text = "All wounded: " + NumTotalWounded.ToString();
     }
 
-    private void UpdatePatientDisplay(AbstractWoundedClass wounded) {
+    private void DispNewPatients(AbstractWoundedClass[] wounded, List<int> NewWounded)
+    {
         
+        PatientOneProperties[(int)PatientTextElements.PatientName].text = wounded[NewWounded[0]].Name;
+        PatientOneProperties[(int)PatientTextElements.PatientAge].text = wounded[NewWounded[0]].Age.ToString();
+        PatientOneProperties[(int)PatientTextElements.PatientNationality].text = wounded[NewWounded[0]].Nationality;
+        PatientOneProperties[(int)PatientTextElements.MinorWounds].text = wounded[NewWounded[0]].Count[0].ToString();
+        PatientOneProperties[(int)PatientTextElements.MajorWounds].text = wounded[NewWounded[0]].Count[1].ToString();
+        PatientOneProperties[(int)PatientTextElements.CriticalWounds].text = wounded[NewWounded[0]].Count[2].ToString();
+
     }
 
-    public void UpdateAll(int DaysToResupply, List<int> NumNewWounded, List<int> NumTotalWounded)
+    public void UpdateAll(int DaysToResupply, List<int> NewWounded, List<int> TotalWounded, AbstractWoundedClass[] wounded)
     {
         DispDaysToResupply(DaysToResupply);
-        DispNumberOfNewWounded(NumNewWounded.Count);
-        DispNumberOfTotalWounded(NumTotalWounded.Count);
+        DispNumberOfNewWounded(NewWounded.Count);
+        DispNumberOfTotalWounded(TotalWounded.Count);
+        DispNewPatients(wounded, NewWounded);
     }
 }
