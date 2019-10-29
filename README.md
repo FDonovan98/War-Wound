@@ -5,10 +5,7 @@ In War Wound you play a medic on the front lines of war. Casulaties are high, su
 ## The Team
 Harry Donovan - Programmer\
 		- Lead Production\
-Leah Fisher   - Programmer \
-Tyler Pinney  - Programmer \
-Chris Copeland - Art/ 3D
-	      
+Chris Copeland - Art/ 3D	      
 
 ## To-Do List
 Normal Text - To Do \

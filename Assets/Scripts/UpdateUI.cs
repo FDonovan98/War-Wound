@@ -23,6 +23,10 @@ public class UpdateUI : MonoBehaviour
         TotalWoundedCount.text = "All wounded: " + NumTotalWounded.ToString();
     }
 
+    private void UpdatePatientDisplay(AbstractWoundedClass wounded) {
+        
+    }
+
     public void UpdateAll(int DaysToResupply, List<int> NumNewWounded, List<int> NumTotalWounded)
     {
         DispDaysToResupply(DaysToResupply);
