@@ -5,11 +5,15 @@ using TMPro;
 
 public class UpdateUI : MonoBehaviour
 {
-    public TextMeshProUGUI Resupply;
-    public TextMeshProUGUI NewWoundedCount;
-    public TextMeshProUGUI TotalWoundedCount;
-    public GameObject PatientOne;
-    private TextMeshProUGUI[] PatientOneProperties;
+    public TextMeshProUGUI resupply;
+    public TextMeshProUGUI newWoundedCount;
+    public TextMeshProUGUI totalWoundedCount;
+    public GameObject patientInfoContainer;
+    private List<GameObject> patientDisplays;
+    private List<TextMeshProUGUI[]> patientProperties;
+    
+    public int patientDisplaySize; 
+    public int patientPropertiesSize; 
 
     private enum PatientTextElements 
         {
@@ -24,42 +28,59 @@ public class UpdateUI : MonoBehaviour
 
     void Start() 
     {
-        PatientOneProperties = PatientOne.GetComponentsInChildren<TextMeshProUGUI>();
+        Transform[] children = patientInfoContainer.GetComponents<Transform>();
+        patientProperties = new List<TextMeshProUGUI[]>();
+        patientDisplays = new List<GameObject>();
 
+        foreach(Transform patientBox in children)
+        {
+            patientDisplays.Add(patientBox.gameObject);
+        }
+        for (int i = 0; i < patientDisplays.Count; i++)
+        {
+            patientProperties.Add(patientDisplays[i].GetComponentsInChildren<TextMeshProUGUI>());
+        }
+
+        patientDisplaySize = patientDisplays.Count;
+        patientPropertiesSize = patientProperties.Count;
     }
 
-    private void DispDaysToResupply(int DaysToResupply)
+    private void DispDaysToResupply(int daysToResupply)
     {
-        Resupply.text = "Days To Resupply: " + DaysToResupply.ToString();
+        resupply.text = "Days To resupply: " + daysToResupply.ToString();
     }
 
-    private void DispNumberOfNewWounded(int NumNewWounded)
+    private void DispNumberOfNewWounded(int numNewWounded)
     {
-        NewWoundedCount.text = "New wounded: " + NumNewWounded.ToString();
+        newWoundedCount.text = "New wounded: " + numNewWounded.ToString();
     }
 
-    private void DispNumberOfTotalWounded(int NumTotalWounded)
+    private void DispNumberOfTotalWounded(int numTotalWounded)
     {
-        TotalWoundedCount.text = "All wounded: " + NumTotalWounded.ToString();
+        totalWoundedCount.text = "All wounded: " + numTotalWounded.ToString();
     }
 
-    private void DispNewPatients(AbstractWoundedClass[] wounded, List<int> NewWounded)
+    private void DispNewPatients(AbstractWoundedClass[] wounded, List<int> newWounded)
     {
+        for (int i = 0; i < newWounded.Count; i++)
+        {
+            TextMeshProUGUI[] CurrentBox = patientProperties[i];
+            CurrentBox[(int)PatientTextElements.PatientName].text = wounded[newWounded[i]].name;
+            CurrentBox[(int)PatientTextElements.PatientAge].text = wounded[newWounded[i]].age.ToString();
+            CurrentBox[(int)PatientTextElements.PatientNationality].text = wounded[newWounded[i]].nationality;
+            CurrentBox[(int)PatientTextElements.MinorWounds].text = wounded[newWounded[i]].count[0].ToString();
+            CurrentBox[(int)PatientTextElements.MajorWounds].text = wounded[newWounded[i]].count[1].ToString();
+            CurrentBox[(int)PatientTextElements.CriticalWounds].text = wounded[newWounded[i]].count[2].ToString();
+        }
         
-        PatientOneProperties[(int)PatientTextElements.PatientName].text = wounded[NewWounded[0]].Name;
-        PatientOneProperties[(int)PatientTextElements.PatientAge].text = wounded[NewWounded[0]].Age.ToString();
-        PatientOneProperties[(int)PatientTextElements.PatientNationality].text = wounded[NewWounded[0]].Nationality;
-        PatientOneProperties[(int)PatientTextElements.MinorWounds].text = wounded[NewWounded[0]].Count[0].ToString();
-        PatientOneProperties[(int)PatientTextElements.MajorWounds].text = wounded[NewWounded[0]].Count[1].ToString();
-        PatientOneProperties[(int)PatientTextElements.CriticalWounds].text = wounded[NewWounded[0]].Count[2].ToString();
 
     }
 
-    public void UpdateAll(int DaysToResupply, List<int> NewWounded, List<int> TotalWounded, AbstractWoundedClass[] wounded)
+    public void UpdateAll(int daysToResupply, List<int> newWounded, List<int> totalWounded, AbstractWoundedClass[] wounded)
     {
-        DispDaysToResupply(DaysToResupply);
-        DispNumberOfNewWounded(NewWounded.Count);
-        DispNumberOfTotalWounded(TotalWounded.Count);
-        DispNewPatients(wounded, NewWounded);
+        DispDaysToResupply(daysToResupply);
+        DispNumberOfNewWounded(newWounded.Count);
+        DispNumberOfTotalWounded(totalWounded.Count);
+        DispNewPatients(wounded, newWounded);
     }
 }

@@ -2,24 +2,24 @@
 
 public class AbstractWoundedClass : AbstractSupplies
 {
-    internal string Name;
-    internal int Age;
-    internal AvailableRanks Rank;
-    internal string Nationality;
+    internal string name;
+    internal int age;
+    internal AvailableRanks rank;
+    internal string nationality;
 
-    private int DeathChanceModifier = 0;
-    internal int TotalDeathChance = 0;
-    internal bool Dead = false;
+    private int deathChanceModifier = 0;
+    internal int totalDeathChance = 0;
+    internal bool dead = false;
 
-    public bool Injured = false;
+    public bool injured = false;
 
-    private int InsufficientMedTreatmentChange = 40;
+    private int insufficientMedTreatmentChange = 40;
 
-    private int[] WoundDeathChance = {10, 20, 40};
+    private int[] woundDeathChance = {10, 20, 40};
 
-    public bool HasBed;
-    private int LengthOfBedStay = 0;
-    private int BedModifier = 0;
+    public bool hasBed;
+    private int lengthOfBedStay = 0;
+    private int bedModifier = 0;
 
     public enum AvailableRanks
     {
@@ -37,30 +37,30 @@ public class AbstractWoundedClass : AbstractSupplies
     }
 
     //Used with 'AbstractGenerateStringReader' script to generate variables using a text file to define name and nationality
-    public AbstractWoundedClass(string WoundedData = "")
+    public AbstractWoundedClass(string woundedData = "")
     {
-        string[] WoundedDataElements = AbstractStringBreaker.StringBreak(WoundedData);
+        string[] WoundedDataElements = AbstractStringBreaker.StringBreak(woundedData);
 
-        Name = WoundedDataElements[0];
-        Nationality = WoundedDataElements[1];
+        name = WoundedDataElements[0];
+        nationality = WoundedDataElements[1];
 
-        Age = Random.Range(16, 65);
+        age = Random.Range(16, 65);
 
         //Generates a random rank using an exponential curve, so higher ranks are rarer 
         //Follows curve x = 10^(y-1), 0 <= x <= 10)
-        float RankValueFloat = Random.Range(0.0f, 2.0f);
-        RankValueFloat = Mathf.Pow(10, RankValueFloat - 1);
-        int RankValueInt = (int)Mathf.Floor(RankValueFloat);
-        Rank = (AvailableRanks)RankValueInt;
+        float rankValueFloat = Random.Range(0.0f, 2.0f);
+        rankValueFloat = Mathf.Pow(10, rankValueFloat - 1);
+        int rankValueInt = (int)Mathf.Floor(rankValueFloat);
+        rank = (AvailableRanks)rankValueInt;
     }
 
     private bool CheckIfInjured()
     {
-        if(Count[0] == 0)
+        if(count[0] == 0)
         {
-            for(int i = 1; i < Count.Length; i++)
+            for(int i = 1; i < count.Length; i++)
             {
-                if(Count[i] != Count[0])
+                if(count[i] != count[0])
                 {
                     return true;
                 }
@@ -70,75 +70,75 @@ public class AbstractWoundedClass : AbstractSupplies
         return true;
     }
 
-    public void TreatWound(WoundType Wound, WoundType Medicine)
+    public void TreatWound(WoundType wound, WoundType medicine)
     {
-        int TreatmentDifference = (int)Medicine - (int)Wound;
+        int treatmentDifference = (int)medicine - (int)wound;
 
-        if(TreatmentDifference < 0)
+        if(treatmentDifference < 0)
         {
-            if(TreatmentDifference == -1)
+            if(treatmentDifference == -1)
             {
-                if(UnityEngine.Random.Range(0, 100) <= InsufficientMedTreatmentChange)
+                if(UnityEngine.Random.Range(0, 100) <= insufficientMedTreatmentChange)
                 {
-                    EditCount(Wound, -1);
+                    EditCount(wound, -1);
                 }
             } else
             {
-                if (UnityEngine.Random.Range(0, 100) <= InsufficientMedTreatmentChange / 2)
+                if (UnityEngine.Random.Range(0, 100) <= insufficientMedTreatmentChange / 2)
                 {
-                    EditCount(Wound, -1);
+                    EditCount(wound, -1);
                 }
             }
         }
-        if(TreatmentDifference >= 0)
+        if(treatmentDifference >= 0)
         {
-            EditCount(Wound, -1);
+            EditCount(wound, -1);
         }
 
-        Injured = CheckIfInjured();
+        injured = CheckIfInjured();
         CalculateTotalDeathChance();
     }
 
     public void CalculateTotalDeathChance()
     {
-        TotalDeathChance = 0;
+        totalDeathChance = 0;
 
-        for(int i = 0; i < NumberOfWoundTypes; i++)
+        for(int i = 0; i < numberOfWoundTypes; i++)
         {
-            TotalDeathChance += Count[i] * WoundDeathChance[i];
+            totalDeathChance += count[i] * woundDeathChance[i];
         }
 
-        TotalDeathChance = OnlyAllowPositive(TotalDeathChance, DeathChanceModifier);
+        totalDeathChance = OnlyAllowPositive(totalDeathChance, deathChanceModifier);
     }
 
     public void CheckIfKilled()
     {
-        if(Random.Range(0, 100) <= TotalDeathChance)
+        if(Random.Range(0, 100) <= totalDeathChance)
         {
-            Dead = true;
+            dead = true;
         }
     }
 
-    public void GiveBed(int LengthOfStay)
+    public void GiveBed(int lengthOfStay)
     {
-        HasBed = true;
-        LengthOfBedStay = LengthOfStay;
-        DeathChanceModifier -= LengthOfBedStay * BedModifier;
+        hasBed = true;
+        lengthOfBedStay = lengthOfStay;
+        deathChanceModifier -= lengthOfBedStay * bedModifier;
     }
 
-    public void EditLengthOfStay(int Change)
+    public void EditLengthOfStay(int change)
     {
-        if (HasBed)
+        if (hasBed)
         {
-            LengthOfBedStay = OnlyAllowPositive(LengthOfBedStay, Change);
+            lengthOfBedStay = OnlyAllowPositive(lengthOfBedStay, change);
         }
         
-        if(LengthOfBedStay == 0)
+        if(lengthOfBedStay == 0)
         {
-            HasBed = false;
+            hasBed = false;
             CheckIfKilled();
 
-            if (!Dead)
+            if (!dead)
             {
                 int[] NoWounds = { 0, 0, 0 };
                 SetCount(NoWounds);

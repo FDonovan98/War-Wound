@@ -10,24 +10,24 @@ public class AbstractSupplies : AbstractOnlyAllowPositiveResult
     };
 
     //Used elsewhere to improve robustnest to code if new WoundTypes are added
-    public static int NumberOfWoundTypes = Enum.GetNames(typeof(WoundType)).Length;
+    public static int numberOfWoundTypes = Enum.GetNames(typeof(WoundType)).Length;
 
     //Stores how many {Minor, Major, Critical} this item has
-    public int[] Count = {0, 0, 0};
+    public int[] count = {0, 0, 0};
 
-    public void SetCount(int[] TypeCount)
+    public void SetCount(int[] typeCount)
     {
-        for (int i = 0; i < NumberOfWoundTypes; i++)
+        for (int i = 0; i < numberOfWoundTypes; i++)
         {
-            Count[i] = OnlyAllowPositive(TypeCount[i], 0);
+            count[i] = OnlyAllowPositive(typeCount[i], 0);
         }
     }
 
-    public void SetCount(int MinorCount, int MajorCount, int CriticalCount)
+    public void SetCount(int minorCount, int majorCount, int criticalCount)
     {
-        Count[(int)WoundType.Minor] = OnlyAllowPositive(MinorCount, 0);
-        Count[(int)WoundType.Major] = OnlyAllowPositive(MajorCount, 0);
-        Count[(int)WoundType.Critical] = OnlyAllowPositive(CriticalCount, 0);
+        count[(int)WoundType.Minor] = OnlyAllowPositive(minorCount, 0);
+        count[(int)WoundType.Major] = OnlyAllowPositive(majorCount, 0);
+        count[(int)WoundType.Critical] = OnlyAllowPositive(criticalCount, 0);
     }
 
     //Needed so class can be called without passing constructors
@@ -36,23 +36,23 @@ public class AbstractSupplies : AbstractOnlyAllowPositiveResult
 
     }
 
-    public AbstractSupplies(int[] TypeCount)
+    public AbstractSupplies(int[] typeCount)
     {
-        for (int i = 0; i < NumberOfWoundTypes; i++)
+        for (int i = 0; i < numberOfWoundTypes; i++)
         {
-            Count[i] = OnlyAllowPositive(TypeCount[i], 0);
+            count[i] = OnlyAllowPositive(typeCount[i], 0);
         }
     }
 
-    public AbstractSupplies(int MinorCount, int MajorCount, int CriticalCount)
+    public AbstractSupplies(int minorCount, int majorCount, int criticalCount)
     {
-        Count[(int)WoundType.Minor] = OnlyAllowPositive(MinorCount, 0);
-        Count[(int)WoundType.Major] = OnlyAllowPositive(MajorCount, 0);
-        Count[(int)WoundType.Critical] = OnlyAllowPositive(CriticalCount, 0);
+        count[(int)WoundType.Minor] = OnlyAllowPositive(minorCount, 0);
+        count[(int)WoundType.Major] = OnlyAllowPositive(majorCount, 0);
+        count[(int)WoundType.Critical] = OnlyAllowPositive(criticalCount, 0);
     }
 
-    public void EditCount(WoundType Type, int Change)
+    public void EditCount(WoundType type, int change)
     {
-        Count[(int)Type] = OnlyAllowPositive(Count[(int)Type], Change);           
+        count[(int)type] = OnlyAllowPositive(count[(int)type], change);           
     }
 }

@@ -3,40 +3,40 @@ using System.Collections.Generic;
 
 public class NewDay : AbstractReadWoundedData
 {
-    private List<int> NewArrivals;
-    private List<int> LeavingPatients;
-    public List<int> CurrentPatients = new List<int>();
-    private int MaxNumberOfPatients = 6;
+    private List<int> newArrivals;
+    private List<int> leavingPatients;
+    public List<int> currentPatients = new List<int>();
+    private int maxNumberOfPatients = 6;
 
-    private static int MaxBeds = 10;
-    private int AvailableBeds = MaxBeds;
+    private static int maxBeds = 10;
+    private int availableBeds = maxBeds;
 
     private AbstractWoundedClass[] wounded;
 
-    private int NumberOfDeaths = 0;
-    private int WeightedDeathScore = 10;
-    private int AllowedNumberOfDeaths = 20;
+    private int numberOfDeaths = 0;
+    private int weightedDeathScore = 10;
+    private int allowedNumberOfDeaths = 20;
 
-    private AbstractSupplies CurrentSupplies;
-    private AbstractSupplies Resupply;
-    private static int ResupplyDelay = 7;
-    private int DaysUntilResupply = ResupplyDelay;
+    private AbstractSupplies currentSupplies;
+    private AbstractSupplies resupply;
+    private static int resupplyDelay = 7;
+    private int daysUntilResupply = resupplyDelay;
 
-    UpdateUI UpdateUI;
+    UpdateUI updateUI;
 
     private void AddNewPatientsToList()
     {
-        wounded = AbstractGenerateNewPatients.GenerateNewPatients(WeightedDeathScore, MaxNumberOfPatients, ref wounded, out NewArrivals);
-        CurrentPatients.AddRange(NewArrivals);
+        wounded = AbstractGenerateNewPatients.GenerateNewPatients(weightedDeathScore, maxNumberOfPatients, ref wounded, out newArrivals);
+        currentPatients.AddRange(newArrivals);
     }
 
     private void RemoveOldPatientsFromList()
     {
-        for(int i = 0; i < CurrentPatients.Count; i++)
+        for(int i = 0; i < currentPatients.Count; i++)
         {
-            if(!wounded[CurrentPatients[i]].HasBed || wounded[CurrentPatients[i]].Dead)
+            if(!wounded[currentPatients[i]].hasBed || wounded[currentPatients[i]].dead)
             {
-                CurrentPatients.RemoveAt(i);        
+                currentPatients.RemoveAt(i);        
             }
         }
     }
@@ -45,19 +45,19 @@ public class NewDay : AbstractReadWoundedData
     {
         for(int i = 0; i < wounded.Length; i++)
         {
-            if (wounded[i].Dead)
+            if (wounded[i].dead)
             {
                 wounded = (AbstractWoundedClass[])AbstractRemoveItemFromArray.RemoveItem(wounded, i);
-                NumberOfDeaths++;
+                numberOfDeaths++;
                 //Score is increased more when a higher rank dies. Used for scaling difficulty
-                WeightedDeathScore += wounded.Rank;
+                weightedDeathScore += wounded.Rank;
             }
         }
     }
 
-    private bool CheckFailureConditions(int AllowedNumberOfDeaths)
+    private bool CheckFailureConditions(int allowedNumberOfDeaths)
     {
-        if(NumberOfDeaths > AllowedNumberOfDeaths)
+        if(numberOfDeaths > allowedNumberOfDeaths)
         {
             return true;
         } else
@@ -69,13 +69,13 @@ public class NewDay : AbstractReadWoundedData
     void Start()
     {
         wounded = ReadInWounded();
-        Resupply = new AbstractSupplies(1, 1, 1);
-        CurrentSupplies = new AbstractSupplies(5, 5, 5);
+        resupply = new AbstractSupplies(1, 1, 1);
+        currentSupplies = new AbstractSupplies(5, 5, 5);
 
         GameObject Canvas = GameObject.Find("Canvas");
-        UpdateUI = Canvas.GetComponent<UpdateUI>();
+        updateUI = Canvas.GetComponent<UpdateUI>();
 
-        Debug.Log(wounded[0].Count[0] + " " + wounded[0].Count[1] + " " + wounded[0].Count[2]);
+        Debug.Log(wounded[0].count[0] + " " + wounded[0].count[1] + " " + wounded[0].count[2]);
     }
 
     public void OnButtonPress()
@@ -83,28 +83,28 @@ public class NewDay : AbstractReadWoundedData
         RemoveOldPatientsFromList();
         AddNewPatientsToList();
         RemoveDeadWounded();
-        if (CheckFailureConditions(AllowedNumberOfDeaths))
+        if (CheckFailureConditions(allowedNumberOfDeaths))
         {
             //Function EndGame should send user to fail screens
             //EndGame();
         } else
         {
-            if(DaysUntilResupply == 0)
+            if(daysUntilResupply == 0)
             {
-                CurrentSupplies = AbstractResupply.DoResupply(CurrentSupplies, Resupply);
-                DaysUntilResupply = ResupplyDelay;
+                currentSupplies = AbstractResupply.DoResupply(currentSupplies, resupply);
+                daysUntilResupply = resupplyDelay;
             }  else
             {
-                DaysUntilResupply--;
+                daysUntilResupply--;
             }         
         }
        
-        UpdateUI.UpdateAll(DaysUntilResupply, NewArrivals, CurrentPatients, wounded);
+        updateUI.UpdateAll(daysUntilResupply, newArrivals, currentPatients, wounded);
 
         //Debug code to print all the current patients wounds
-        //for(int i = 0; i < CurrentPatients.Count; i++)
+        //for(int i = 0; i < currentPatients.count; i++)
         //{
-        //    Debug.Log(wounded[CurrentPatients[i]].Count[0] + " " + wounded[CurrentPatients[i]].Count[1] + " " + wounded[CurrentPatients[i]].Count[2]);
+        //    Debug.Log(wounded[currentPatients[i]].count[0] + " " + wounded[currentPatients[i]].count[1] + " " + wounded[currentPatients[i]].count[2]);
         //}
       
     }

@@ -4,19 +4,19 @@ using System.IO;
 public class AbstractGenerateStringReader
 {
     //Reads in a text file, converts it to class TextAsset and then converts this text asset to class StringReader
-    public static void GenerateStringReader(string Filename, out StringReader Reader, out int LineCount)
+    public static void GenerateStringReader(string filename, out StringReader reader, out int lineCount)
     {
-        TextAsset FilenameAsset = Resources.Load<TextAsset>("Text Files/" + Filename);
-        Debug.Assert(FilenameAsset != null, Filename + ".txt could not be loaded");
+        TextAsset FilenameAsset = Resources.Load<TextAsset>("Text Files/" + filename);
+        Debug.Assert(FilenameAsset != null, filename + ".txt could not be loaded");
 
-        Reader = new StringReader(FilenameAsset.text);
+        reader = new StringReader(FilenameAsset.text);
 
-        LineCount = 0;
-        while (Reader.ReadLine() != null)
+        lineCount = 0;
+        while (reader.ReadLine() != null)
         {
-            LineCount++;
+            lineCount++;
         }
 
-        Reader = new StringReader(FilenameAsset.text);
+        reader = new StringReader(FilenameAsset.text);
     }
 }

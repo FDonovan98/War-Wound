@@ -1,11 +1,11 @@
 ﻿public class AbstractOnlyAllowPositiveResult
 {
     //Will only return a positive or 0 value
-    public int OnlyAllowPositive(int Value, int Change)
+    public int OnlyAllowPositive(int value, int change)
     {
-        if ((Value += Change) > 0)
+        if ((value += change) > 0)
         {
-           return Value;
+           return value;
         } else
         {
             return 0;

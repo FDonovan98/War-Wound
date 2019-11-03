@@ -2152,7 +2152,7 @@ MonoBehaviour:
   Resupply: {fileID: 1892838665}
   NewWoundedCount: {fileID: 839242281}
   TotalWoundedCount: {fileID: 335054376}
-  PatientOne: {fileID: 1653550845}
+  PatientInfoContainer: {fileID: 846635758}
 --- !u!1 &180888346
 GameObject:
   m_ObjectHideFlags: 0

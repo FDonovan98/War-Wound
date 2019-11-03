@@ -1,12 +1,12 @@
 ﻿public class AbstractResupply : AbstractSupplies
 {
     //Increases the count of one AbstractSupplies variable by the count of another. Used when doing a resupply
-    public static AbstractSupplies DoResupply(AbstractSupplies AvailableSupplies, AbstractSupplies Resupply)
+    public static AbstractSupplies DoResupply(AbstractSupplies availableSupplies, AbstractSupplies resupply)
     {
-        for(int i = 0; i < NumberOfWoundTypes; i++)
+        for(int i = 0; i < numberOfWoundTypes; i++)
         {
-            AvailableSupplies.EditCount((WoundType)i, Resupply.Count[i]);
+            availableSupplies.EditCount((WoundType)i, resupply.count[i]);
         }
-        return AvailableSupplies;
+        return availableSupplies;
     }
 }
